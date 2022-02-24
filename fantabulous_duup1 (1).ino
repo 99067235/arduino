@@ -15,7 +15,7 @@ int previous = LOW;
 
 
 long time = 0;         
-long debounce = 200;   ers
+long debounce = 200;
 
 void setup()
 {
@@ -29,6 +29,8 @@ void setup()
   lcd.setCursor(0,0);
   lcd.print("Press button to:");
   lcd.setCursor(0,1);
+  Serial.begin(10000); 
+
 }
 
 // schrijf hier tussen je code
@@ -39,14 +41,17 @@ void loop()
     if (state == HIGH){
       state = LOW;
       lcd.print("Turn light on ");
+      Serial.println("light is off");
       lcd.setCursor(0,1);
-      delay(1000);
+
+      
     }
     else{
       state = HIGH;
  	  lcd.print("Turn light off");
+      Serial.println("light is on");
       lcd.setCursor(0,1);
-      delay(1000);
+      
     }
    
   }
